@@ -1,6 +1,10 @@
-// Run the following
-//  cd /00-Basics/01-BareMinimumServer
-//  node app.js
+/**
+ * To Run:
+ *   cd /00-Basics/01-BareMinimumServer
+ *   node app.js
+ *
+ * Navigate to http://localhost:3000/
+ */
 
 const http = require("http");
 
