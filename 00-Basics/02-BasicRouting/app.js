@@ -34,20 +34,31 @@ const server = http.createServer((req, res) => {
       body.push(chunk);
       console.log(chunk);
     });
-    req.on("end", () => {
+    return req.on("end", () => {
       const parsedBody = Buffer.concat(body).toString();
       console.log(parsedBody);
 
       const msg = parsedBody.split("=")[1];
       // NOTE: writeFileSync WILL block code execution until it finishes (vs. writeFile)
-      fs.writeFileSync("message.txt", msg);
+      // fs.writeFileSync("message.txt", msg);
+
+      // NOTE: writeFile will allow other requests to be processed which is ideal when writing large files
+      fs.writeFile("message.txt", msg, (err) => {
+        // if (err) // handle...
+
+        // * RESPONSE (WHEN DONE WITH FILE)
+        res.statusCode = 302;
+        // * Send a redirect to the user to '/'
+        res.setHeader("Location", "/");
+        return res.end();
+      });
     });
 
-    // * RESPONSE
-    res.statusCode = 302;
-    // * Send a redirect to the user to '/'
-    res.setHeader("Location", "/");
-    return res.end();
+    // * RESPONSE (if using writeFileSync)
+    // res.statusCode = 302;
+    // // * Send a redirect to the user to '/'
+    // res.setHeader("Location", "/");
+    // return res.end();
   }
 
   res.setHeader("Content-Type", "text/html");
