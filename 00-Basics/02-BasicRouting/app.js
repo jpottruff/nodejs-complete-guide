@@ -7,6 +7,7 @@
  */
 
 const http = require("http");
+const fs = require("fs");
 
 const server = http.createServer((req, res) => {
   const url = req.url;
@@ -38,7 +39,8 @@ const server = http.createServer((req, res) => {
       console.log(parsedBody);
 
       const msg = parsedBody.split("=")[1];
-      console.log(msg);
+      // NOTE: writeFileSync WILL block code execution until it finishes (vs. writeFile)
+      fs.writeFileSync("message.txt", msg);
     });
 
     // * RESPONSE
