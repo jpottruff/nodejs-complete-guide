@@ -26,8 +26,24 @@ const server = http.createServer((req, res) => {
   }
 
   if (url === "/message" && method === "POST") {
-    // Send a redirect to the user to '/'
+    // * DATA PARSING
+    const body = [];
+    // * eventListener for Buffer / data stream
+    req.on("data", (chunk) => {
+      body.push(chunk);
+      console.log(chunk);
+    });
+    req.on("end", () => {
+      const parsedBody = Buffer.concat(body).toString();
+      console.log(parsedBody);
+
+      const msg = parsedBody.split("=")[1];
+      console.log(msg);
+    });
+
+    // * RESPONSE
     res.statusCode = 302;
+    // * Send a redirect to the user to '/'
     res.setHeader("Location", "/");
     return res.end();
   }
