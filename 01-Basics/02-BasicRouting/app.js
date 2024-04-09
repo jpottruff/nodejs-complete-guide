@@ -1,6 +1,6 @@
 /**
  * To Run:
- *   cd /00-Basics/02-BasicRouting
+ *   cd /01-Basics/02-BasicRouting
  *   node app.js
  *
  * Navigate to http://localhost:3000/

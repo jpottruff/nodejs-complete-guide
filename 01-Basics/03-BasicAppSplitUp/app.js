@@ -1,6 +1,6 @@
 /**
  * To Run:
- *   cd /00-Basics/03-BasicAppSplitUp
+ *   cd /01-Basics/03-BasicAppSplitUp
  *   node app.js
  *
  * Navigate to http://localhost:3000/
