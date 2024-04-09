@@ -61,8 +61,16 @@ const requestHandler = (req, res) => {
 // OPTION 1 - module exporting 1 thing
 // module.exports = requestHandler;
 
-// OPTION 2 - module exports multiple things
-module.exports = {
-  handler: requestHandler,
-  someText: "helllllllo module",
-};
+// OPTION 2A - module exports multiple things
+// module.exports = {
+//   handler: requestHandler,
+//   someText: "helllllllo module",
+// };
+
+// OPTION 2b - module exports multiple things (alt syntax)
+// module.exports.handler = requestHandler;
+// module.exports.someText = "helllllllo module";
+
+// OPTION 2c - module exports multiple things (node shortcut syntax)
+exports.handler = requestHandler;
+exports.someText = "helllllllo module";
