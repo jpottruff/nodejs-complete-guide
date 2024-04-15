@@ -13,8 +13,8 @@ app.use("/add-product", (req, res, next) => {
   );
 });
 
-// Middleware for `/product` route
-app.use("/product", (req, res, next) => {
+// Middleware for `/product` route - POST only
+app.post("/product", (req, res, next) => {
   console.log(req.body); // needs body-parser to work correctly
   res.redirect("/");
 });
