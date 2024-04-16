@@ -5,6 +5,12 @@ const bodyParser = require("body-parser");
 
 const app = express();
 
+// RE app.set() https://expressjs.com/en/4x/api.html#app.settings.table
+// RE: express / template engines https://expressjs.com/en/guide/using-template-engines.html
+// NOTE: pug auto registers itself with express - this will not apply to _all_ template engines
+app.set("view engine", "pug");
+app.set("views", "views");
+
 const adminData = require("./routes/admin");
 const shopRoutes = require("./routes/shop");
 
