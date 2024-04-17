@@ -2,15 +2,17 @@ const path = require("path");
 
 const express = require("express");
 const bodyParser = require("body-parser");
+const expressHbs = require("express-handlebars");
 
 const app = express();
 
-// TODO - replace engine
 // RE app.set() https://expressjs.com/en/4x/api.html#app.settings.table
 // RE: express / template engines https://expressjs.com/en/guide/using-template-engines.html
-// NOTE: pug auto registers itself with express - this will not apply to _all_ template engines
-// app.set("view engine", "pug");
-// app.set("views", "views");
+// NOTE: you must register handlebars as an engine in order to use it (see docs for which version you are using)
+// https://www.npmjs.com/package/express-handlebars#usage
+app.engine("handlebars", expressHbs.engine({ defaultLayout: false }));
+app.set("view engine", "handlebars");
+app.set("views", "views");
 
 const adminData = require("./routes/admin");
 const shopRoutes = require("./routes/shop");
