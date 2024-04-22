@@ -1,9 +1,4 @@
-const path = require("path"); // TODO remove
-
 const express = require("express");
-
-const rootDir = require("../util/path"); // TODO remove
-// const { title } = require("process"); // TODO remove
 
 const router = express.Router();
 
@@ -12,15 +7,13 @@ const products = [];
 
 // /admin/add-product => GET
 router.get("/add-product", (req, res, next) => {
-  res.sendFile(path.join(rootDir, "views", "add-product.html"));
-  // TODO
-  // res.render("add-product", {
-  //   productCSS: true,
-  //   formsCSS: true,
-  //   activeAddProduct: true,
-  //   docTitle: "Add Product",
-  //   path: "/admin/add-product",
-  // });
+  res.render("add-product", {
+    productCSS: true,
+    formsCSS: true,
+    activeAddProduct: true,
+    docTitle: "Add Product",
+    path: "/admin/add-product",
+  });
 });
 
 // /admin/add-product => POST
