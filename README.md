@@ -25,3 +25,7 @@ Basic overview of how to share data between files, how to display dynamic data, 
 - [Pug](https://pugjs.org/api/getting-started.html)
 - [Handlebars](https://handlebarsjs.com/)
 - [EJS](https://ejs.co/#docs)
+
+### 05 MVC
+
+Continuation of the EJS app from Module 4 with the logic split MVC style

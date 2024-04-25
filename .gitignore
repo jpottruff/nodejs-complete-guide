@@ -132,3 +132,4 @@ dist
 # Project specific 
 01-Basics/02*/*.txt
 01-Basics/03*/*.txt
+05-MVC/data/*.json
