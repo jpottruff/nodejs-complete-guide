@@ -24,19 +24,18 @@ module.exports = class Product {
   }
 
   // REMEMBER: `static` allows the method to be called on the class itself and not on an instantiated Object
-  static fetchAll() {
+  static fetchAll(cb) {
     const p = path.join(
       path.dirname(require.main.filename),
       "data",
       "products.json"
     );
-    // NOTE: this will break things elsewhere...
+
     fs.readFile(p, (err, data) => {
       if (err) {
-        return [];
+        cb([]);
       }
-      const products = JSON.parse(data);
-      return products;
+      cb(JSON.parse(data));
     });
   }
 };
